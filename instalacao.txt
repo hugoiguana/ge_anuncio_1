@@ -1,37 +1,39 @@
-# Instalação do projeto:
+# Instalação do projeto no windows:
 # OBS: [] => Comandos a serem executados no Git Bash
-1 - Baixar e instalar o node e npm(Npm já vem na instalação do node);
-	https://nodejs.org/en/download/
-2  - [cd c/Desenvolvimento/projetos]
-3  - [mkdir ge_anuncio_1]
-4  - [cd ge_anuncio_1]
-5  - [mkdir cliente]
-6  - [git init]
-7  - [node -v] 
-8  - [npm -v]
-9  - [ng -v]
-10 - [npm install -g @angular/cli]
-11 - [ng new ge-anuncio]
-12 - [cd ge-anuncio]
-13 - [ls -l] (Verifique os arquivos criados pelo angular cli)
-14 - [ng serve --open]
-15 - [ctrl + c] (Encerrar o servidor)
-16 - [cd ../..]
-17 - Criar repositorio no gitHub com o nome "ge_anuncio_1";
-18 - [git status]
-19 - [git add .]
-20 - [git status]
-21 - [git commit -a -m 'Instalação do projeto "ge_anuncio" angular.']
-22 - [git remote add origin https://github.com/hugoiguana/ge_anuncio_1]
-
-
-
-
-
-21 - Abrir projeto no Visual Code;
-21 - 
-
-
-
-
-
+--------------------------------------------------------------------------------------------
+	1  - Entrar no CMD do Windows;
+	2  - Verificar se o Node e Angular CLI estão instalados na máquina, executando os três comandos abaixo:
+	3  - [node -v] 
+		Caso não tenha o node instalado, baixe-o e instale-o(OBS: Npm já vem na instalação do node)
+		https://nodejs.org/en/download/	
+	4  - [npm -v]
+	5  - [ng -v]
+		Caso não tenha o Angular CLI instaldo execute o comando abaixo para instalá-lo através do npm:
+		[npm install -g @angular/cli]	
+--------------------------------------------------------------------------------------------
+# Os passoas abaixo só devem ser seguidos se já existir o projeto "ge_anuncio_1" no github:	
+	6  - [cd c/Desenvolvimento/projetos]
+	7  - [git clone https://github.com/hugoiguana/ge_anuncio_1.git ]
+	8  - [cd ge_anuncio_1/cliente/ge-anuncio] 
+	9  - [ng serve --open] (Verificar se a página inicial do projeto foi aberta no navegador)
+	10 - Abrir projeto no Visual Code
+--------------------------------------------------------------------------------------------	
+# Os passoas abaixo só devem ser seguidos se não existir o projeto "ge_anuncio_1" no github:	
+	6  - [cd c/Desenvolvimento/projetos]
+	7  - [mkdir ge_anuncio_1]
+	8  - [cd ge_anuncio_1]
+	9  - [git init]
+	10 - [mkdir cliente]
+	11 - [ng new ge-anuncio]
+	12 - [cd ge-anuncio]
+	13 - [ls -l] (Verifique os arquivos criados pelo angular cli)
+	14 - [ng serve --open] (Verificar se a página inicial do projeto foi aberta no navegador)
+	15 - [ctrl + c] (Encerrar o servidor)
+	16 - Criar repositorio no gitHub com o nome "ge_anuncio_1". OBS: Ajuste o .gitignore pra projeto Node.	
+	17 - [cd ../..]
+	18 - [git add .]
+	19 - [git commit -a -m 'Instalação do projeto "ge_anuncio" angular.']
+	20 - [git remote add origin https://github.com/hugoiguana/ge_anuncio_1.git]
+	21 - [git push -u origin master]
+	22 - Abrir projeto no Visual Code
+--------------------------------------------------------------------------------------------
