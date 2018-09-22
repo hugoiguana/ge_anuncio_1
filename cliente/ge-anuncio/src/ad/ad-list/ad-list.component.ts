@@ -33,7 +33,7 @@ export class AdListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.adList);
+    
   }
 
 }
