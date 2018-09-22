@@ -9,6 +9,7 @@
 [ctrl + c] (Encerrar o servidor)
 [generate module ad] ou [g m ad] (Cria um modulo com nome 'ad')
 [ng generate component ad/ad-list] ou [ng g c ad/ad-list] (Cria um component com nome 'ad-list')
+[ng generate service] ou [ng g s]
 
 #Git:
 [git init] (Torna uma pasta comum em pasta gerenciada pelo git)
