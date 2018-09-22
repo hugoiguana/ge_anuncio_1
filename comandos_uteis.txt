@@ -1,0 +1,16 @@
+#npm:
+[npm -v] (Verificar versão)
+[npm install -g @angular/cli] (Instala o angular cli)
+
+#Angular Cli:
+[ng new ge-anuncio] (Criar projeto angular)
+[ng -v] (Verificar versão)
+[ng serve --open] (Compila, inicializa e abre no navegador)
+[ctrl + c] (Encerrar o servidor)
+
+#Git:
+[git init] (Torna uma pasta comum em pasta gerenciada pelo git)
+
+
+#Node:
+[node -v] (Verificar versão)
