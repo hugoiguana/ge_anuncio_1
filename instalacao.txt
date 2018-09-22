@@ -26,14 +26,18 @@
 	10 - [mkdir cliente]
 	11 - [ng new ge-anuncio]
 	12 - [cd ge-anuncio]
-	13 - [ls -l] (Verifique os arquivos criados pelo angular cli)
-	14 - [ng serve --open] (Verificar se a página inicial do projeto foi aberta no navegador)
-	15 - [ctrl + c] (Encerrar o servidor)
-	16 - Criar repositorio no gitHub com o nome "ge_anuncio_1". OBS: Ajuste o .gitignore pra projeto Node.	
-	17 - [cd ../..]
-	18 - [git add .]
-	19 - [git commit -a -m 'Instalação do projeto "ge_anuncio" angular.']
-	20 - [git remote add origin https://github.com/hugoiguana/ge_anuncio_1.git]
-	21 - [git push -u origin master]
-	22 - Abrir projeto no Visual Code
+	13 - [npm install bootstrap]
+	14 - [ls -l] (Verifique os arquivos criados pelo angular cli)
+	15 - [ng serve --open] (Verificar se a página inicial do projeto foi aberta no navegador)
+	16 - [ctrl + c] (Encerrar o servidor)
+	17 - Criar repositorio no gitHub com o nome "ge_anuncio_1". OBS: Ajuste o .gitignore pra projeto Node.	
+	18 - [cd ../..]
+	19 - [git add .]
+	20 - [git commit -a -m 'Instalação do projeto "ge_anuncio" angular.']
+	21 - [git remote add origin https://github.com/hugoiguana/ge_anuncio_1.git]
+	22 - [git push -u origin master]
+	23 - Abrir projeto no Visual Code
+--------------------------------------------------------------------------------------------
+OBS1: No Visual Code pode-se ser aberto um terminal pelo caminho:
+	Terminal > new Terminal
 --------------------------------------------------------------------------------------------

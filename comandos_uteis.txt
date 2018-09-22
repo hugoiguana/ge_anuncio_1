@@ -7,6 +7,8 @@
 [ng -v] (Verificar versão)
 [ng serve --open] (Compila, inicializa e abre no navegador)
 [ctrl + c] (Encerrar o servidor)
+[generate module ad] ou [g m ad] (Cria um modulo com nome 'ad')
+[ng generate component ad/ad-list] ou [ng g c ad/ad-list] (Cria um component com nome 'ad-list')
 
 #Git:
 [git init] (Torna uma pasta comum em pasta gerenciada pelo git)
@@ -14,3 +16,10 @@
 
 #Node:
 [node -v] (Verificar versão)
+
+#Linus:
+[mkdir] (Cria diretório)
+[rm] (Apaga arquivo)
+[rmdir] (Apaga diretório)
+ls
+ls -l
