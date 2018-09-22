@@ -8,11 +8,11 @@ import { Ad } from '../Ad';
 })
 export class AdListComponent implements OnInit {
 
-  adList: Ad[] = [new Ad(1, 'Nootbook intel i7', 1600),
-                  new Ad(2, 'Nootbook intel i7', 1600),
-                  new Ad(3, 'Tv samsung 42 polegagas em ótimo estado', 850),
-                  new Ad(4, 'Playstation 4 - 2 anos de uso', 700),
-                  new Ad(4, 'Poltrona do papai super confortável', 680)
+  adList: Ad[] = [new Ad(1, 'Nootbook intel i7', 1600, ''),
+                  new Ad(2, 'Celta life 4p 2008', 12000, ''),
+                  new Ad(3, 'Tv samsung 42 polegagas em ótimo estado', 850, ''),
+                  new Ad(4, 'Playstation 4 - 2 anos de uso', 700, ''),
+                  new Ad(4, 'Poltrona do papai super confortável', 680, '')
                 ];
 
   /*
