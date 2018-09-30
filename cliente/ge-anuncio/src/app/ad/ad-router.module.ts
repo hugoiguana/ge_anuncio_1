@@ -1,12 +1,27 @@
-import { AdNewComponent } from './ad-new/ad-new.component';
-import { AdListComponent } from './ad-list/ad-list.component';
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes, Router } from '@angular/router';
 
+import { AdListComponent } from './ad-list/ad-list.component';
+import { AdListResolver } from './ad-list/ad-list.resolver';
+import { AdNewComponent } from './ad-new/ad-new.component';
+
+
 const routes : Routes = [
-  {path: 'ad/list', component: AdListComponent},
-  {path: 'ad/new', component: AdNewComponent}
+  {
+    path: '', 
+    component: AdListComponent,
+    resolve: { ads : AdListResolver }
+  },
+  { 
+    path: 'ad/list', 
+    component: AdListComponent,
+    resolve: { ads : AdListResolver }
+  },
+  {
+    path: 'ad/new', 
+    component: AdNewComponent
+  }
 ];
 
 @NgModule({

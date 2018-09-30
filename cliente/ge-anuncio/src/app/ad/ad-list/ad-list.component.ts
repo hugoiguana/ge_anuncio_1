@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { Ad } from '../Ad';
-import { AdService } from '../ad.service';
+
 
 @Component({
   selector: 'ge-ad-list',
@@ -11,13 +13,12 @@ export class AdListComponent implements OnInit {
 
   adList: Ad[] = [];
 
-  constructor(private adService: AdService) { 
-
-    
+  constructor(private activatedRoute: ActivatedRoute) { 
   }
   
   ngOnInit() {
-    this.adList = this.adService.getAds();
+    this.adList = this.activatedRoute.snapshot.data.ads;
+    //ou this.adList = this.activatedRoute.snapshot.data['ads'];
   }
 
 }

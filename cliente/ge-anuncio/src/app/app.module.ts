@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { AdModule } from './ad/ad.module';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
-import { AdRouterModule } from './ad/ad-router.module';
 
 @NgModule({
   declarations: [
@@ -15,8 +14,7 @@ import { AdRouterModule } from './ad/ad-router.module';
   ],
   imports: [
     BrowserModule,
-    AdModule,
-    AdRouterModule
+    AdModule
   ],
   providers: [],
   bootstrap: [AppComponent]
