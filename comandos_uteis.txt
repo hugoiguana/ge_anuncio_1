@@ -24,3 +24,4 @@
 [rmdir] (Apaga diretório)
 [ls]
 [ls -l]
+
