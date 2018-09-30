@@ -1,10 +1,11 @@
 #npm:
-[npm -v] (Verificar vers„o)
+[npm -v] (Verificar vers√£o)
 [npm install -g @angular/cli] (Instala o angular cli)
+[npm start] (Encapsula o comando [ng serve]. Para mais detalhes pode-se olhar o arquivo package.json)
 
 #Angular Cli:
 [ng new ge-anuncio] (Criar projeto angular)
-[ng -v] (Verificar vers„o)
+[ng -v] (Verificar vers√£o)
 [ng serve --open] (Compila, inicializa e abre no navegador)
 [ctrl + c] (Encerrar o servidor)
 [generate module ad] ou [g m ad] (Cria um modulo com nome 'ad')
@@ -16,11 +17,11 @@
 
 
 #Node:
-[node -v] (Verificar vers„o)
+[node -v] (Verificar vers√£o)
 
 #Linus:
-[mkdir] (Cria diretÛrio)
+[mkdir] (Cria diret√≥rio)
 [rm] (Apaga arquivo)
-[rmdir] (Apaga diretÛrio)
+[rmdir] (Apaga diret√≥rio)
 ls
 ls -l
