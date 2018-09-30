@@ -1,7 +1,7 @@
 #npm:
 [npm -v] (Verificar versão)
 [npm install -g @angular/cli] (Instala o angular cli)
-[npm start] (Encapsula o comando [ng serve]. Para mais detalhes pode-se olhar o arquivo package.json)
+[npm start] (Encapsula o comando [ng serve]. Para mais detalhes, pode-se olhar o arquivo package.json)
 
 #Angular Cli:
 [ng new ge-anuncio] (Criar projeto angular)
@@ -15,7 +15,6 @@
 #Git:
 [git init] (Torna uma pasta comum em pasta gerenciada pelo git)
 
-
 #Node:
 [node -v] (Verificar versão)
 
@@ -23,5 +22,5 @@
 [mkdir] (Cria diretório)
 [rm] (Apaga arquivo)
 [rmdir] (Apaga diretório)
-ls
-ls -l
+[ls]
+[ls -l]
