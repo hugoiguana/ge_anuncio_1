@@ -1,44 +1,39 @@
 package com.hugoiguana.br.geanuncio1.models;
 
+import lombok.*;
+
 import java.math.BigDecimal;
+import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class Ad extends Entity{
+@Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class Ad {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    Long id;
     String description;
     BigDecimal value;
     String urlImage;
 
-    public Ad(Integer id, String description, BigDecimal value, String urlImage) {
-        this.id = id;
-        this.description = description;
-        this.value = value;
-        this.urlImage = urlImage;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyEntity entity = (MyEntity) o;
+        return Objects.equals(id, entity.id);
     }
 
-    public Ad() {
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public BigDecimal getValue() {
-        return value;
-    }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
-    }
-
-    public String getUrlImage() {
-        return urlImage;
-    }
-
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
