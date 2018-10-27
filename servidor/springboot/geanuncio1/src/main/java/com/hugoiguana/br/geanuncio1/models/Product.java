@@ -2,10 +2,9 @@ package com.hugoiguana.br.geanuncio1.models;
 
 import lombok.*;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Objects;
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 @Builder
@@ -13,8 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@AttributeOverride(name="id", column=@Column(name="ad_id"))
-public class Ad extends MyEntity {
+@AttributeOverride(name="id", column=@Column(name="product_id"))
+public class Product extends MyEntity {
 
     @Column(nullable=false)
     String description;
@@ -22,11 +21,12 @@ public class Ad extends MyEntity {
     @Column(nullable=false)
     BigDecimal value;
 
-    @Column(nullable=true)
-    String urlImage;
+    String urlImage1;
+    String urlImage2;
 
-    @OneToMany(mappedBy = "ad")
-    List<Product> products;
+    @ManyToOne
+    @JoinColumn(name = "ad_id")
+    Ad ad;
 
     @Override
     public boolean equals(Object o) {

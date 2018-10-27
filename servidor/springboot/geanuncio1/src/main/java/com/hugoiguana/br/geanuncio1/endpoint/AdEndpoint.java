@@ -4,7 +4,6 @@ package com.hugoiguana.br.geanuncio1.endpoint;
 import com.hugoiguana.br.geanuncio1.models.Ad;
 import com.hugoiguana.br.geanuncio1.repository.AdRepository;
 import com.hugoiguana.br.geanuncio1.service.AdService;
-import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,7 +27,9 @@ public class AdEndpoint {
     @RequestMapping(method = RequestMethod.GET, path = "list")
     public List<Ad> list(){
 
-        insertSomeAdsToTestOny();
+        //insertSomeAdsToTestOny();
+
+        Ad ads2 = adRepository.findFirstByOrderByDescriptionAsc();
 
         try {
             adService.insertSomeAdsTestTransation();
