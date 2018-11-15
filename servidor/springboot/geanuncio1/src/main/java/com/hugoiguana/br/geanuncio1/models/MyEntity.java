@@ -12,7 +12,7 @@ import java.util.Objects;
 public class MyEntity {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(nullable=false)
     Integer id;
 

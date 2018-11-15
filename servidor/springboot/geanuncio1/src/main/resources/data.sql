@@ -1,4 +1,10 @@
 
+delete from user_ad;
+delete from address;
+delete from product;
+delete from ad;
+
+
 insert into ad (ad_id, description, url_image, value)
 values (1, 'Nootbook intel i7', 'https://a-static.mlcdn.com.br/618x463/notebook-lenovo-ideapad-320-intel-celeron-n3350-4gb-1tb-led-156-windows-10/magazineluiza/218313700/ede357e0d01c0b9c8c4a60fe533526fa.jpg', 1600)
 ,(2, 'Celta life 4p 2008', 'https://img.olx.com.br/images/64/644821037823977.jpg', 12000)
@@ -30,10 +36,17 @@ values
 (20, 'Produto U', 1000, 5);
 
 
-insert into address (address_id, city, country, state, street)
-values (1, 0, 1, 1, 'Rua A');
+insert into address (address_id, city, country, state, street, number)
+values (1, 0, 1, 1, 'Rua A', 'A13')
+	  ,(2, 0, 1, 1, 'Rua B', 'A219')
+	  ,(3, 1, 1, 1, 'Rua C', 'A22')
+	  ,(4, 2, 1, 1, 'Rua D', 'A23')
+	  ,(5, 2, 1, 1, 'Rua E', 'A57');
 
-insert into user_ad (user_id, dt_age, full_name, nick_name, gender, address_id)
+insert into user_ad (user_id, dt_age, full_name, nick_name, email, phone_number, gender, address_id)
 values
-(1, '1989-04-20', 'Hugo Fernando da Mota', 'iguana', 0, 1),
-(2, '1990-01-11', 'Aline Lúcia Silva dos Santos', 'aline', 1, 1);
+(1, '1989-04-20', 'Hugo Fernando da Mota', 'iguana', 'hugo.iguanaa@gmail.com', '81986335574', 0, 1)
+,(2, '1990-01-11', 'Aline Lúcia Silva dos Santos', 'aline', 'aline-4000@hotmail.com', null, 1, 2)
+,(3, '1956-02-10', 'Alaíde Rosa da Mota', 'alaide', 'alaide@hotmail.com', null, 1, 3)
+,(4, '1957-06-17', 'Gilson Henrique dos Santos', 'gilson', 'didinho@hotmail.com', null, 0, 4)
+,(5, '1955-02-10', 'Marta', 'marta', 'marta@hotmail.com', '819666666', 1, 5);
