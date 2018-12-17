@@ -1,8 +1,8 @@
 package com.hugoiguana.br.geanuncio1.endpoint;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +17,8 @@ import com.hugoiguana.br.geanuncio1.models.ECity;
 import com.hugoiguana.br.geanuncio1.models.ECountry;
 import com.hugoiguana.br.geanuncio1.models.EGender;
 import com.hugoiguana.br.geanuncio1.models.EState;
+import com.hugoiguana.br.geanuncio1.models.Product;
 import com.hugoiguana.br.geanuncio1.models.User;
-import com.hugoiguana.br.geanuncio1.repository.UserRepository;
 import com.hugoiguana.br.geanuncio1.service.AddressService;
 import com.hugoiguana.br.geanuncio1.service.UserService;
 
@@ -45,7 +45,7 @@ public class UserEndpoint {
 
 		return "Usuário adcionado : " + user.toString();
 	}
-
+	
 	@SuppressWarnings("unused")
 	@RequestMapping(path = "get_test", method = RequestMethod.GET)
 	public String testGetUser() {
@@ -89,6 +89,9 @@ public class UserEndpoint {
 
 		List<User> users20 = userService.findByAddressCity(ECity.CAMARAGIBE, UserService.ORDER_BY_FULLNAME_ASC);
 		List<User> users21 = userService.findByAddressCityIn(ECity.CAMARAGIBE, ECity.OLINDA);
+		
+		List<User> users22 = userService.findByFullNameContainingIgnoreCase("hugo");
+		List<User> users23 = userService.findByFullNameContainingIgnoreCase2("hugo");
 		
 		return user.toString();
 	}

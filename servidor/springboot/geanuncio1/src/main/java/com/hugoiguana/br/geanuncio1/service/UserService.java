@@ -127,4 +127,12 @@ public class UserService extends BaseEntityService<User, Integer> {
 		return userRepository.findByAddressCityIn(Arrays.asList(addressCity), ORDER_BY_FULLNAME_ASC);
 	}
 	
+	public List<User> findByFullNameContainingIgnoreCase(String fullName) {
+		return userRepository.findByFullNameContaining(fullName.toUpperCase());
+	}
+	
+	public List<User> findByFullNameContainingIgnoreCase2(String fullName) {
+		return userRepository.findByFullNameContaining2(fullName.toUpperCase());
+	}
+	
 }

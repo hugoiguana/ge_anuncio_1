@@ -50,8 +50,7 @@ public class User extends MyEntity {
     @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     @JoinColumn(name = "address_id", nullable=false, unique=true)
     private Address address;
-
-
+    
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -3,6 +3,7 @@ package com.hugoiguana.br.geanuncio1.models;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
@@ -25,8 +26,20 @@ public class Ad extends MyEntity {
     @Column(nullable=true)
     String urlImage;
 
-    @OneToMany(mappedBy = "ad")
+    @OneToMany(mappedBy = "ad", cascade = CascadeType.ALL)
     List<Product> products;
+    
+    public void addProduct(Product product) {
+    	
+    	if (products == null) {
+    		products = new ArrayList<>();
+    	}
+    	
+    	if (product != null) {
+    		product.setAd(this);
+    		products.add(product);
+    	}
+    }
 
     @Override
     public boolean equals(Object o) {

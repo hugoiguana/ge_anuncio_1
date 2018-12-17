@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.hugoiguana.br.geanuncio1.models.ECity;
 import com.hugoiguana.br.geanuncio1.models.User;
@@ -17,6 +19,8 @@ import com.hugoiguana.br.geanuncio1.models.User;
 //Referencia: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
 
 public interface UserRepository extends JpaRepository<User, Integer> {
+	
+	//Query creation from method names
 	
 	Optional<User> findFirstByOrderByIdAsc();
 	
@@ -78,4 +82,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	List<User> findByAddressCityIn(Collection<ECity> addressCity, Sort sort);
 	
+	//@Query("select u from User u where upper(u.fullName) like upper('%?1%')")
+	@Query("select u from User u where upper(u.fullName) like %?1%")
+	List<User> findByFullNameContaining(String fullName);
+	
+	@Query("select u from User u where upper(u.fullName) like %:fullName%")
+	List<User> findByFullNameContaining2(@Param("fullName") String fullName);
+	
 }
+

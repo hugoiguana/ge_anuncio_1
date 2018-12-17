@@ -2,14 +2,38 @@ package com.hugoiguana.br.geanuncio1.endpoint;
 
 
 import com.hugoiguana.br.geanuncio1.models.Ad;
+import com.hugoiguana.br.geanuncio1.models.AdReport;
+import com.hugoiguana.br.geanuncio1.models.Address;
+import com.hugoiguana.br.geanuncio1.models.ECity;
+import com.hugoiguana.br.geanuncio1.models.ECountry;
+import com.hugoiguana.br.geanuncio1.models.EGender;
+import com.hugoiguana.br.geanuncio1.models.EState;
+import com.hugoiguana.br.geanuncio1.models.Product;
+import com.hugoiguana.br.geanuncio1.models.User;
+import com.hugoiguana.br.geanuncio1.models.Report.AdReportBuilder;
 import com.hugoiguana.br.geanuncio1.repository.AdRepository;
+import com.hugoiguana.br.geanuncio1.repository.ProductRepository;
 import com.hugoiguana.br.geanuncio1.service.AdService;
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.view.JasperViewer;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +44,24 @@ public class AdEndpoint {
 
     @Autowired
     private AdRepository adRepository;
+    
+    @Autowired
+    private ProductRepository productRepository; 
 
     @Autowired
     private AdService adService;
-
+    
+    @Autowired
+    private AdReportBuilder adReportBuilder;
+    
+    @Autowired
+    private Environment env;
+    
     @RequestMapping(method = RequestMethod.GET, path = "list")
     public List<Ad> list(){
 
+    	System.out.println(env.getProperty("teste.a"));
+    	
         //insertSomeAdsToTestOny();
 
         Ad ads2 = adRepository.findFirstByOrderByDescriptionAsc();
@@ -41,44 +76,45 @@ public class AdEndpoint {
         adRepository.findAll().forEach(ad -> ads.add(ad));
         return ads;
     }
+    
+	@RequestMapping(path = "add_test1", method = RequestMethod.GET)
+	public String testAddUserWithProducts() {
 
-    private void insertSomeAdsToTestOny() {
+		Ad ad = Ad.builder().description("Anúncio 1").urlImage("https://img.olx.com.br/images/64/644821037823977.jpg")
+				.value(BigDecimal.valueOf(6100)).build();
 
-        Ad ad1 = Ad.builder()
-                .description("Nootbook intel i7")
-                .value(new BigDecimal(1600))
-                .urlImage("https://a-static.mlcdn.com.br/618x463/notebook-lenovo-ideapad-320-intel-celeron-n3350-4gb-1tb-led-156-windows-10/magazineluiza/218313700/ede357e0d01c0b9c8c4a60fe533526fa.jpg")
-                .build();
+		ad.addProduct(Product.builder().description("Produto 1").value(BigDecimal.valueOf(5000)).build());
+		ad.addProduct(Product.builder().description("Produto 2").value(BigDecimal.valueOf(1000)).build());
+		ad.addProduct(Product.builder().description("Produto 3").value(BigDecimal.valueOf(100)).build());
 
-        Ad ad2 = Ad.builder()
-                .description("Celta life 4p 2008")
-                .value(new BigDecimal(12000))
-                .urlImage("https://img.olx.com.br/images/64/644821037823977.jpg")
-                .build();
+		adRepository.save(ad);
+		
+		productRepository.save(Product.builder().description("Produto 1").value(BigDecimal.valueOf(160)).build());
 
-        Ad ad3 = Ad.builder()
-                .description("Tv samsung 42 polegagas em ótimo estado")
-                .value(new BigDecimal(850))
-                .urlImage("https://www.sanborns.com.mx/imagenes-sanborns-ii/1200/8806088790473_4.jpg")
-                .build();
+		return "Anúncio adicionado : " + ad.toString();
+	}
 
-        Ad ad4 = Ad.builder()
-                .description("Playstation 4 - 2 anos de uso")
-                .value(new BigDecimal(700))
-                .urlImage("https://s2.glbimg.com/kVWErTnOwfao3Iq9PmqWKo7d8I4=/0x600/s.glbimg.com/po/tt2/f/original/2015/10/30/playstation-4-funcionalidades-melhores-xbox-one.jpg")
-                .build();
+	@RequestMapping(path = "report_pdf", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> reportAllAdPDF() {
 
-        Ad ad5 = Ad.builder()
-                .description("Poltrona do papai super confortável")
-                .value(new BigDecimal(680))
-                .urlImage("https://img1.madeiramadeira.com.br/prd/imperio-estofados/192108/poltrona-do-papai-reclin-vel-gelo-198_desc.jpg")
-                .build();
+		byte[] bytes = adReportBuilder.generateReportPdf(adRepository.findAllByOrderByDescription());
 
-        adRepository.save(ad1);
-        adRepository.save(ad2);
-        adRepository.save(ad3);
-        adRepository.save(ad4);
-        adRepository.save(ad5);
-    }
+		return ResponseEntity.ok()
+				// Specify content type as PDF
+				.header("Content-Type", "application/pdf; charset=UTF-8")
+				// Tell browser to display PDF if it can
+				.header("Content-Disposition", "inline; filename=\"relatorio_anuncios.pdf\"").body(bytes);
+	}
+	
+	@RequestMapping(path = "report_exel", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> reportAllAdExcel() {
 
+		byte[] bytes = adReportBuilder.generateReportExel(adRepository.findAllByOrderByDescription());
+
+		return ResponseEntity.ok()
+				// Specify content type as PDF
+				.header("Content-Type", "application/xls; charset=UTF-8")
+				// Tell browser to display PDF if it can
+				.header("Content-Disposition", "inline; filename=\"relatorio_anuncios.xls\"").body(bytes);
+	}
 }

@@ -1,13 +1,15 @@
 package com.hugoiguana.br.geanuncio1.repository;
 
-import com.hugoiguana.br.geanuncio1.models.Ad;
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+import com.hugoiguana.br.geanuncio1.models.Ad;
 
 public interface AdRepository extends CrudRepository<Ad, Integer>, CustomizedAdRepository {
 
     Ad findFirstByOrderByDescriptionAsc();
+    
+    List<Ad> findAllByOrderByDescription();
 
-    //public List<Ad> findAll();
 }

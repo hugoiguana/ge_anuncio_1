@@ -3,11 +3,13 @@ package com.hugoiguana.br.geanuncio1;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 
 import javax.persistence.EntityManagerFactory;
 
 @SpringBootApplication
+@PropertySource("classpath:teste.properties")
 public class Geanuncio1Application {
 
     public static void main(String[] args) {
